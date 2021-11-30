@@ -4,4 +4,5 @@
 deps/deps.jl
 Manifest.toml
 .ipynb_checkpoints
-
+ExamplePkgCompiled
+*.so

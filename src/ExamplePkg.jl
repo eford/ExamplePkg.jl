@@ -38,9 +38,14 @@ end
 
 """
 Demo program to evaluate normal PDF from command line.
-Prepare executable using [PackageCompiler.jl](https://julialang.github.io/PackageCompiler.jl/stable/apps.html)
+To make an executable, make a new directory, activate it, create a new Project.toml, add PackageCompiler, and develope this repository.  Then
+```julia
+using PackageCompiler
+create_app(joinpath(homedir(),".julia","dev","ExamplePkg"), "example_pkg", executables=["demo"=>"julia_main",], incremental=true)
+For more information, see [PackageCompiler.jl](https://julialang.github.io/PackageCompiler.jl/stable/apps.html)
+```
 """
-Base.@ccallable function julia_main()::Cint
+function julia_main()::Cint
   x, mu, sigma = parse_args_for_demo(ARGS)
   result = pdf_normal(x,mu,sigma)
   println("prob(x | mu, sigma) = ", result)
